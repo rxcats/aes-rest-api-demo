@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.github.rxcats.aesrestapidemo.config.Constants;
 import io.github.rxcats.aesrestapidemo.message.AesResponseEntity;
 import io.github.rxcats.aesrestapidemo.message.BookRequest;
+import io.github.rxcats.aesrestapidemo.message.EmptyRequest;
 import io.github.rxcats.aesrestapidemo.mvc.annotation.EnableAesErrorHandler;
 
 @EnableAesErrorHandler
@@ -23,7 +24,7 @@ public class BookController {
     }
 
     @PostMapping("/book/error")
-    public AesResponseEntity error() {
+    public AesResponseEntity error(@RequestBody EmptyRequest request) {
         throw new RuntimeException("just error");
     }
 
