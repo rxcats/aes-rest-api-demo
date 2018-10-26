@@ -1,0 +1,26 @@
+# using json string
+POST http://localhost:8080/book
+Content-Type: application/vnd.rxcats.api
+
+{"book":{"isbn":"9780007525546","name":"반지의 제왕","author":"J. R. R. 톨킨","createdAt":"2018-10-26T08:05:57+00:00"}}
+
+###
+
+
+# using encrypted json string
+POST http://localhost:8080/book
+Content-Type: application/vnd.rxcats.api
+
+QGNzvLz/KnjIOifv+UFnUWVkPwFw52NuV4AKdZ001zTsEBHYk1X/VmHRfWB/GXszlkcHWfWvXYlADoVdja4c7ZxQivMau7MS28LK5iydBHb9VnTYnc+z9LUTrhogieHQi0mDpWJJxOqLoNlQGBYU7bbhUhYbwAXK7ZODVR7mnEE=
+
+# result : ho+Ey3tpd+P1OGKzX3L9dRexRS0C2PSEVe5Htv7x222+70MuzPmeLo5Dm+oPpcZuAS6932+mHefs1NjTwLcfvr0PPdZ5BkL48fnhpaNrwuRaNDG7BdS3MngNxm/XZREhKZ1REjYmXXmG3EO6SJz/dGU0duEmaBx5rydVxuJoCjud0l1tlB8e1yoYpJe6TgYOM5lEnGMvGrP8C6863j6xTUeRw+WPjGukfeDVEU46n3iy2u1oQchEsIqB1Oz23/C4
+###
+
+
+# error test
+POST http://localhost:8080/book/error
+Content-Type: application/vnd.rxcats.api
+
+AA
+
+###
