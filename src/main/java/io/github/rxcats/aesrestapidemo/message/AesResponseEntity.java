@@ -2,10 +2,8 @@ package io.github.rxcats.aesrestapidemo.message;
 
 import lombok.Data;
 
-import io.github.rxcats.aesrestapidemo.mvc.converter.AesApiBodyType;
-
 @Data
-public class AesResponseEntity<T> implements AesApiBodyType {
+public class AesResponseEntity<T> {
 
     private int code = 0;
 

@@ -13,16 +13,23 @@ import io.github.rxcats.aesrestapidemo.message.BookRequest;
 import io.github.rxcats.aesrestapidemo.mvc.annotation.EnableAesErrorHandler;
 
 @EnableAesErrorHandler
-@RequestMapping(produces = Constants.API_MEDIA_TYPE_VALUE, consumes = Constants.API_MEDIA_TYPE_VALUE)
+@RequestMapping(value = "/aes",
+    produces = {Constants.API_MEDIA_TYPE_ENC_VALUE, Constants.API_MEDIA_TYPE_JSON_VALUE},
+    consumes = {Constants.API_MEDIA_TYPE_ENC_VALUE, Constants.API_MEDIA_TYPE_JSON_VALUE})
 @RestController
 public class BookController {
 
-    @PostMapping("/book")
+    @PostMapping(value = "/book")
     public AesResponseEntity book(@Valid @RequestBody BookRequest request) {
         return AesResponseEntity.of(request);
     }
 
-    @PostMapping("/book/error")
+    @PostMapping(value = "/book/empty")
+    public AesResponseEntity book() {
+        return AesResponseEntity.of();
+    }
+
+    @PostMapping(value = "/book/error")
     public AesResponseEntity error() {
         throw new RuntimeException("just error");
     }

@@ -10,6 +10,8 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import io.github.rxcats.aesrestapidemo.config.Constants;
+import io.github.rxcats.aesrestapidemo.exception.AesDecodeException;
+import io.github.rxcats.aesrestapidemo.exception.AesEncodeException;
 
 public class AES256Cipher {
 
@@ -30,10 +32,8 @@ public class AES256Cipher {
             cipher.init(Cipher.ENCRYPT_MODE, newKey, ivSpec);
             return Base64.encodeBase64String(cipher.doFinal(textBytes));
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new AesEncodeException();
         }
-
-        return "";
     }
 
     public static String decode(String str) {
@@ -45,9 +45,7 @@ public class AES256Cipher {
             cipher.init(Cipher.DECRYPT_MODE, newKey, ivSpec);
             return new String(cipher.doFinal(textBytes), StandardCharsets.UTF_8);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new AesDecodeException();
         }
-
-        return "";
     }
 }
